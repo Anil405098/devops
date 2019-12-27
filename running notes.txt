@@ -1,0 +1,536 @@
+AWS TOPICS:
+..........
+EC2 
+IAM
+EBS
+LOADBALANCERS
+VPC
+S3
+ROUTE53
+AUTO SCALING
+CLOUD WATCH
+ECS
+EKS
+LAMBDA
+
+apache
+nginx
+tomcat
+
+
+EC2: ELASTIC COMPUTE CLOUD
+
+jenkins
+github
+docker
+ansible
+
+
+
+
+
+
+
+
+
+nagios
+elk
+
+
+
+on-prem:own data center
+cloud: managed servers
+
+ipv4:Internet protocal version 4 ip address will be onliy on numerical format
+ipv6: Internet protocal version 6 ip address should be alpha numeric
+
+private ip:10 , 172 ,192
+
+linux protocal:ssh 
+port number:22
+
+http: Hytertext transfer protocal
+port number:80
+
+https: Hytertext transfer protocal secure
+port number :443
+
+
+PEM: Private Enchanced mail
+
+amazon linux: Default user ec2-user
+Redhat linux: Default user ec2-user
+ubuntu: Default user: ubuntu
+centos: Default user: centos
+
+yum update -y
+
+ubuntu:apt-get update -y
+
+
+How to install apache in linux
+
+yum install httpd -y
+
+service httpd start(linux version below 7)
+sytemctl start httpd(linux version above 7)
+
+
+service httpd enable
+
+systemctl enable httpd
+
+In ubuntu apache will call it as apache2
+
+cd /var/www/html/index.html
+
+/etc/http/conf/httpd.conf
+
+If you want to create directory means
+mkdir <directory name>
+vi <filename>
+cat <filename>
+cp source destistination
+mv old file name new filename
+
+to create a file without using vi
+echo "<your message>" > filename.exc
+
+
+drwxr-xr-x
+-rwx---
+lrwx--
+
+r: read :4
+w: write: 2
+x: execuite:1
+
+chmod 744 filename or directory name
+
+
+task:
+Install apache in linux
+create a directory mywebsite
+change the root directory /var/www/html to mywebsite
+go to mywebsite directory and create a file called home.html
+try to access that contect in browser.
+
+centos: default user will be centos
+ubuntu: default user will  be ubuntu
+amazon linux & Redhat linux default user will be ec2-user
+
+steps:
+......
+login into aws console
+create one windows instance and allow the ports 22 and 3386tos 
+create one centos instrance and allow the port 22 from windows 
+connect windows instance and install gitbash 
+copy your centos pem key into windows server
+try to connect centos from windows server
+intall apache in centos and share me the ip address
+
+scp -i .pemfile .pemfile username@public ip:path
+
+IAM:
+...
+IDENTITY AND ACCESS MANAGEMENT
+
+
+USERS
+GROUPS
+PERMISSIONS
+
+
+create one username withyour name in IAM
+attach  adminstrator policy  to this user
+try to access with IAM USER
+
+
+s3: simple storage service
+s3 having buckets
+
+life cycle policy of s3:
+standard
+standard -1A
+glacier
+
+how to set hostname in linux
+hostnamectl set-hostname cloud
+
+aws s3 cp source bucketname
+how to unzip folder in linux
+unzip file or folder name
+
+export PATH=/root/.local/lib/aws/bin:$PATH
+
+crontab syntax:
+..............
+* * * * *
+*: minute(0-59)
+*: hours(0-23)
+*: day of the month(1-31)
+*: month of the year(1-12)
+*: Day of the week (1-7)
+
+EBS:Elastic block storage:
+..........................
+types of EBS:
+1) General purpose SSD (1 gb - 16 tb)
+2) Provisioned iops ssd (4gb -16tb)
+3) magnatic HDD (500 gb -16tb)
+
+SSD : solid state drive 3 iops 
+HDD : Hard disk drive
+how to mount ebs volume to ec2 instance
+1) List the volumes in the disk
+ lsblk
+2) check the volume as any data 
+sodo file -s /dev/xvdf
+3) Format the volume to ext4 file system
+sudo mkfs -t ext4 /dev/xvdf
+4) create a directory to mount your new ext4 volume
+mkdir bhanu
+5) mount the volume to new directory(bhanu)
+sudo mount /dev/xvdf /directory name
+6) check the disk space for conforming the volume mount
+cd /directory name
+df -h
+7) If you want to unmount 
+unmount /dev/xvdf
+
+
+EBS AUTOMOUNT ON REBOOT:
+........................
+Back up the /etc/fstab file
+sudo cp /etc/fstab /etc/fstab.bak
+open /etc/fstab & make an entry in the following format
+device_name mount_point file_system_type fs_mntops fs_freq fd_ps
+/dev/xvdf /new volume ext4 defalts,no fails 0 0
+Execute the following command to ckeck id the fstab file has any error.
+sudo mount -a
+If the above command shows no error it means your fstab entry is good.
+
+
+VPC:
+....
+Virtual private cloud
+subnets:
+public subnet 
+private subnet
+
+Load balancer:
+..............
+Classic load balancer
+Application load balancer
+Network load balancer
+
+
+mysql:
+.....
+how to connect mysql server from mysql client
+mysql -h <endpoint url> -u <username> -p
+
+DEVOPS:
+Dev + ops 
+SDLC: Software development life cycle
+planning .....>Analize......> Design......> coding .....> Testing...>
+deployment>>>>Maintainance
+
+
+dev >>>>testing >>>>>pre-prod >>>>> production
+
+
+scm >>>> jenkins >>>> ansible >>>>> docker >>>> kubernates
+
+
+
+monitoring: nagios
+
+scm: source code management
+
+svn:
+cvs:
+git:
+
+git:
+...
+intilize
+add
+status
+commit
+push
+pull
+git Advanced:
+...........
+branching
+merging
+
+
+
+what is git tags?
+when we will use git tags?
+how many types of git tags ?
+we have two types of git tags
+lightweight annotated
+what is lightweight git tag? How to create light weight git tag?
+what is annotated git tag ? How to create annotated git tag?
+what is difference between lightweight tag and annotated tag?
+how to check all all commits in local?
+how to see particular tag information?
+how to create a tag for older commits ?
+how to check a particular tag? 
+how to check git log with pretty mode?
+how to list out all tags?
+how to get all tags to local form remote repository?
+how to push tags to remote repository?
+how to delete a tag in local? how to delete all tags at a time in local?
+how to delete a tag in remote repository? how to delete all tags at a time in remote repository? 
+
+
+
+git tag <name>
+git tag -a <name> -m "message"
+
+what is git merge and rebase
+when we will use git merge
+when we will use git rebase
+git merge vs rebase
+
+
+git checkout,reset and revert, git stash
+
+how to undo the working directory changes ?
+how to undo the all files in working directory changes?
+how to undo the local commit changes?
+what is git reset ?
+How many ways we can do reset ?
+using --soft --hard --mixed
+how to changes remote commit changes ?
+what is git stash ?
+use case of git stash ?
+git stash pop 
+
+Build tools:
+............
+Ant
+Maven
+gradle
+npm
+
+Ant is the only build tools
+Ant does'nt have pre-defined structure
+There is no life cycle for Ant
+
+ Maven
+ Maven is a framework
+ There is lifecycle for maven
+ maven having lifecycle structure & It will take the project structure
+ 
+
+ lifecycle:
+ .........
+ Validate: validate the project is correct & all necessary information is available
+ compile: compile the source code
+ test: unit test cases 
+ package: pack the code as war/jar
+ verify:
+ install:
+ deploy:
+ 
+ 
+ mvn complile
+ mvn install
+ mvn clean
+ mvn package
+ 
+ JAR: Java Archive
+ 
+ war: Web archive
+ 
+ 
+ #java Downloading 
+wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
+#installtion of java
+rpm -ivh jdk-8u131-linux-x64.rpm
+#Download tomcat 
+mkdir /opt/devops
+cd /opt/devops
+wget http://mirrors.wuchna.com/apachemirror/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34-windows-x64.zip
+unzip apache-tomcat-8.5.34-windows-x64.zip
+chmod -R 755 apache-tomcat*
+mv apache-tomcat-8.5.34 tomcat
+cd tomcat/webapps/
+wget https://updates.jenkins-ci.org/download/war/2.140/jenkins.war
+cd /opt/devops/tomcat/bin/startup.sh
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+wget 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
